@@ -1,14 +1,35 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceContainer name="magewire.plugin.scripts">
-        <block name="hyva-checkout.smartcore.inpostinternationalhyva.geowidget" after="-"
-               template="Smartcore_InPostInternationalHyva::geowidget-script.phtml">
-            <arguments>
-                <argument name="view_model" xsi:type="object">
-                    Smartcore\InPostInternationalHyva\Checkout\Inpost\Magewire\Locker
-                </argument>
-            </arguments>
-        </block>
-    </referenceContainer>
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <css src="Smartcore_InPostInternationalHyva::css/inpost-locker.css"/>
+        <script src="Smartcore_InPostInternationalHyva::js/inpost-locker.js" defer="defer"/>
+    </head>
+
+    <body>
+        <referenceContainer name="magewire.plugin.scripts">
+            <block name="hyva-checkout.smartcore.inpostinternationalhyva.config"
+                   template="Smartcore_InPostInternationalHyva::inpost-config.phtml">
+                <arguments>
+                    <argument name="config_provider" xsi:type="object">
+                        Smartcore\InPostInternationalHyva\ViewModel\ConfigProviderWrapper
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="checkout.shipping.methods">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="checkout.shipping.method.inpostinternationalcourier_courier"
+                   as="inpostinternationalcourier_courier"
+                   template="Smartcore_InPostInternationalHyva::component/shipping/method/inpostinternationalcourier_courier.phtml">
+            </block>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="checkout.shipping.method.mondialrelaycourier_courier"
+                   as="mondialrelaycourier_courier"
+                   template="Smartcore_InPostInternationalHyva::component/shipping/method/inpostinternationalcourier_courier.phtml">
+            </block>
+        </referenceBlock>
+    </body>
 </page>

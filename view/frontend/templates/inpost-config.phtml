@@ -1,0 +1,41 @@
+<?php
+/**
+ * Template for InPost International configuration
+ *
+ * @var Template $block
+ */
+
+use Magento\Framework\View\Element\Template;
+use Smartcore\InPostInternationalHyva\ViewModel\ConfigProviderWrapper;
+
+/** @var ConfigProviderWrapper $configProviderWrapper */
+$configProviderWrapper = $block->getData('config_provider');
+
+if (!$configProviderWrapper) {
+    return;
+}
+
+$config = $configProviderWrapper->getConfig() ?? [];
+?>
+<div id="inpost-config-data" style="display: none;"
+    <?php
+        foreach ($config as $key => $value):
+            $dataKey = $configProviderWrapper->camelToKebab($key);
+
+            if (is_bool($value)) {
+                $dataValue = $value ? 'true' : 'false';
+            } elseif (is_array($value) || is_object($value)) {
+                $dataValue = json_encode($value);
+            } else {
+                $dataValue = $value;
+            }
+
+            if (stripos($key, 'url') !== false) {
+                echo 'data-' . $block->escapeHtmlAttr($dataKey) . '="' . $block->escapeUrl($dataValue) . '" ';
+            } else {
+                echo 'data-' . $block->escapeHtmlAttr($dataKey) . '="' . $block->escapeHtmlAttr($dataValue) . '" ';
+            }
+        endforeach;
+    ?>
+>
+</div>

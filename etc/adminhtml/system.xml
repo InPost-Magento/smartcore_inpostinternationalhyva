@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="shipping">
+            <group id="inpostinternational" translate="label" type="text" showInDefault="1" showInWebsite="1"
+                   sortOrder="998">
+                <group id="hyva" translate="label" type="text" showInDefault="1" showInWebsite="1" sortOrder="150">
+                    <label>Hyva checkout settings</label>
+                    <attribute type="expanded">1</attribute>
+                    <field id="shipping_methods_container" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Shipping methods section container selector</label>
+                        <comment>JavaScript selector of shipping methods container that is not re-rendered</comment>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>
