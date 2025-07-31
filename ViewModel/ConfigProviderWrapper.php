@@ -61,6 +61,7 @@ final class ConfigProviderWrapper extends ConfigProvider implements ArgumentInte
             foreach($hyvaConfig as $key => $value) {
                 $result[$key] = $value;
             }
+
             return $result;
         } catch (\Exception $e) {
             $this->logger->error('InPost config error: ' . $e->getMessage());

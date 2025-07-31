@@ -64,3 +64,18 @@
         transform: rotate(-45deg);
     }
 }
+
+#inpost-locker-logo-wrapper {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    display: flex;
+    align-items: flex-start;
+    background: transparent;
+}
+#inpost-locker-logo-wrapper img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+}

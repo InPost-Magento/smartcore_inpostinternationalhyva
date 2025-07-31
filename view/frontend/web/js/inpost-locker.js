@@ -1,4 +1,4 @@
-const InpostLockerModule = {
+const InPostLockerModule = {
     validationRegistered: false,
 
     init() {
@@ -13,10 +13,10 @@ const InpostLockerModule = {
         }
 
         this.config = this.getConfig();
-        console.log('Config', this.config);
         this.bindEvents();
         this.restoreSelectedPoint();
         this.elements.selectBtn.dataset.inPostInitialized = 'true';
+        this.insertLogo();
     },
 
     getSelectedPoint() {
@@ -298,21 +298,46 @@ const InpostLockerModule = {
             genericServerSavedPoint ||
             genericLocalStoragePoint;
     },
-};
 
-// Translation helper function
-function __(text) {
-    return window.hyva?.translate?.(text) || text;
-}
+    insertLogo() {
+        const container = document.querySelector('#inpost-locker-logo-wrapper');
+        if (!container) {
+            return;
+        }
+
+        container.querySelectorAll('img').forEach(img => img.remove());
+        const selectedInput = document.querySelector('input[name="shipping-method-option"]:checked');
+        const carrierCode = selectedInput?.value?.split('_')[0];
+
+        if (!carrierCode || !this.config) {
+            setTimeout(() => this.insertLogo(), 500);
+            return;
+        }
+
+        const logoUrlKey = 'logoUrl_' + carrierCode;
+        const logoSrc = this.config[logoUrlKey];
+        if (!logoSrc) {
+            return;
+        }
+        const img = document.createElement('img');
+        img.src = logoSrc;
+        img.alt = '';
+
+        const parent = selectedInput.closest('[id^="shipping-method-option-"]');
+        parent.style.position = 'relative';
+
+        container.appendChild(img);
+    }
+};
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        InpostLockerModule.init();
+        InPostLockerModule.init();
     });
 } else {
-    InpostLockerModule.init();
+    InPostLockerModule.init();
 }
 
 window.addEventListener('checkout:shipping:method-activate', event => {
-    InpostLockerModule.init();
+    InPostLockerModule.init();
 });

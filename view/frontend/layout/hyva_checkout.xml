@@ -31,10 +31,5 @@
                    template="Smartcore_InPostInternationalHyva::component/shipping/method/inpostinternationalcourier_courier.phtml">
             </block>
         </referenceBlock>
-
-        <referenceContainer name="hyva.checkout.init-evaluation.after">
-            <block name="hyva.checkout.init-evaluation.inpost-locker-validation"
-                   template="Smartcore_InPostInternationalHyva::inpost-locker-validation.phtml"/>
-        </referenceContainer>
     </body>
 </page>
