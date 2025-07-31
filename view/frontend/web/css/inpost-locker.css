@@ -1,0 +1,66 @@
+.inpost-modal-overlay {
+    position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center;
+}
+.inpost-modal-content {
+    background: #fff;
+    position: relative;
+    max-width: 90%;
+    max-height: 85%;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    padding: 50px 10px 10px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+#inpost-map-container {
+    width: 100%;
+    height: 100%;
+}
+#inpost_locker-selected {
+    margin-top: 10px;
+}
+#inpost-modal-wrapper {
+    display:none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+#inpost-modal-wrapper *:focus-visible, *:focus {
+    box-shadow: 0 0 0 0 transparent!important;
+}
+#inpost-modal-close {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        left: 15px;
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+}
