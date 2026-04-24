@@ -2,8 +2,12 @@
     "name": "smartcore/inpostinternationalhyva",
     "description": "InPost International Hyva Checkout Integration",
     "type": "magento2-module",
-    "version": "1.0.1",
+    "license": [
+        "proprietary"
+    ],
     "require": {
+        "php": ">=8.1 <8.5",
+        "magento/framework": "^103.0",
         "smartcore/inpostinternational": "^1.0.0",
         "hyva-themes/magento2-hyva-checkout": "^1.0.0"
     },
