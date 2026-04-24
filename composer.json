@@ -8,6 +8,9 @@
         "hyva-themes/magento2-hyva-checkout": "^1.0.0"
     },
     "autoload": {
+        "files": [
+            "registration.php"
+        ],
         "psr-4": {
             "Smartcore\\InPostInternationalHyva\\": ""
         }
