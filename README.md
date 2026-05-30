@@ -6,7 +6,7 @@ It requires the `smartcore/inpostinternational` module to be installed first.
 
 ## Requirements
 - Magento 2.4.x
-- PHP >= 8.1 < 8.3
+- PHP >= 8.1 < 8.6
 - Smartcore/InPostInternational module installed
 
 ## Installation
