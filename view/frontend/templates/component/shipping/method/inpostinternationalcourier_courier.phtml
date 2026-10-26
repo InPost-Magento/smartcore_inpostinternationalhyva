@@ -1,10 +1,15 @@
-<button id="inpost-select-picker" type="button" class="action update btn btn-secondary">
-    <?= /* @noEscape */ __('Select pickup point') ?>
+<?php
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<button id="inpost-select-picker" type="button" class="action update btn btn-secondary"
+        data-change-label="<?= $escaper->escapeHtmlAttr(__('Change pickup point')) ?>"
+        data-required-message="<?= $escaper->escapeHtmlAttr(__('Please select a pickup point for the chosen shipping method.')) ?>">
+    <?= $escaper->escapeHtml(__('Select pickup point')) ?>
 </button>
 <div id="inpost-locker-logo-wrapper"></div>
 <div id="inpost_locker-selected" style="display:none">
     <div>
-        <strong><?= /* @noEscape */ __('Selected locker:') ?></strong>
+        <strong><?= $escaper->escapeHtml(__('Selected locker:')) ?></strong>
         <span id="inpost_locker-code"></span>
     </div>
     <div id="inpost_locker-address"></div>
